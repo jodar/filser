@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'capybara/rails'   
 
+feature "whatever" do
   scenario "Signing in with correct credentials" do
     visit '/movies/new'
     within("#new") do
@@ -13,3 +13,4 @@ require 'capybara/rails'
     click_button 'Create Movie'
     expect(page).to have_content 'Movie was successfully created.'
   end
+end
