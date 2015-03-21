@@ -1,0 +1,33 @@
+<h1>Listing series</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Season</th>
+      <th>Episodes</th>
+      <th>Status</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @series.each do |series| %>
+      <tr>
+        <td><%= series.title %></td>
+        <td><%= series.season %></td>
+        <td><%= series.episodes %></td>
+        <td><%= series.status %></td>
+        <td><%= series.description %></td>
+        <td><%= link_to 'Show', series %></td>
+        <td><%= link_to 'Edit', edit_series_path(series) %></td>
+        <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Series', new_series_path %>

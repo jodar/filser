@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @series.title %>
+</p>
+
+<p>
+  <strong>Season:</strong>
+  <%= @series.season %>
+</p>
+
+<p>
+  <strong>Episodes:</strong>
+  <%= @series.episodes %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @series.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @series.description %>
+</p>
+
+<%= link_to 'Edit', edit_series_path(@series) %> |
+<%= link_to 'Back', series_index_path %>
