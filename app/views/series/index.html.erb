@@ -1,33 +1,44 @@
-<h1>Listing series</h1>
-
-<table>
+<%- model_class = Series -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Season</th>
-      <th>Episodes</th>
-      <th>Status</th>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:season) %></th>
+      <th><%= model_class.human_attribute_name(:episodes) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @series.each do |series| %>
       <tr>
+        <td><%= link_to series.id, series_path(series) %></td>
         <td><%= series.title %></td>
         <td><%= series.season %></td>
         <td><%= series.episodes %></td>
         <td><%= series.status %></td>
         <td><%= series.description %></td>
-        <td><%= link_to 'Show', series %></td>
-        <td><%= link_to 'Edit', edit_series_path(series) %></td>
-        <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l series.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_series_path(series), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      series_path(series),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Series', new_series_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_series_path,
+            :class => 'btn btn-primary' %>
