@@ -1,0 +1,25 @@
+<h1>Listing episodios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @episodios.each do |episodio| %>
+      <tr>
+        <td><%= episodio.title %></td>
+        <td><%= link_to 'Show', episodio %></td>
+        <td><%= link_to 'Edit', edit_episodio_path(episodio) %></td>
+        <td><%= link_to 'Destroy', episodio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Episodio', new_episodio_path %>

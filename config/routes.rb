@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :episodios
+
+  resources :temporadas
+
   get 'welcome/index'
 
   resources :series

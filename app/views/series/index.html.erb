@@ -7,11 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:season) %></th>
-      <th><%= model_class.human_attribute_name(:episodes) %></th>
-      <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,11 +16,7 @@
       <tr>
         <td><%= link_to series.id, series_path(series) %></td>
         <td><%= series.title %></td>
-        <td><%= series.season %></td>
-        <td><%= series.episodes %></td>
-        <td><%= series.status %></td>
         <td><%= series.description %></td>
-        <td><%=l series.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_series_path(series), :class => 'btn btn-mini' %>

@@ -11,26 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320210010) do
+ActiveRecord::Schema.define(version: 20150407000653) do
+
+  create_table "episodios", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "temporada_id"
+  end
+
+  add_index "episodios", ["temporada_id"], name: "index_episodios_on_temporada_id"
 
   create_table "movies", force: true do |t|
     t.string   "title"
     t.integer  "year"
     t.text     "description"
     t.boolean  "status"
-    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "series", force: true do |t|
     t.string   "title"
-    t.string   "season"
     t.string   "episodes"
-    t.boolean  "status"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "temporadas", force: true do |t|
+    t.string   "title"
+    t.string   "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "series_id"
+  end
+
+  add_index "temporadas", ["series_id"], name: "index_temporadas_on_series_id"
 
 end
