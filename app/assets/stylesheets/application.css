@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  */
- *= require_self
- *= require_tree .
- */
 
 @import url(http://fonts.googleapis.com/css?family=Special+Elite);
+
+.well	 {
+	padding: 41px 2px 1px 2px;
+}

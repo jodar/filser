@@ -1,0 +1,12 @@
+    def create #create do temporada
+    @temporada = Temporada.new(temporada_params)
+
+    respond_to do |format|
+      if @temporada.save
+        format.html { redirect_to series_temporadas_url(@temporada.series_id), notice: 'Adicionar Temporada para série' }
+      else
+        format.html { render :new }
+        format.json { render json: @temporada.errors, status: :unprocessable_entity }
+      end
+    end
+  end

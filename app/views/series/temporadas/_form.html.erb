@@ -1,0 +1,7 @@
+<%= form_for([:series, @temporada], remote: true)  do |f| %>
+
+  <%= f.hidden_field :series_id, value: @series_id %>
+  <%= @series_id %>
+  <%= f.text_field :title, placeholder: 'Nova temporada...', size: 100 %>
+
+<% end %>

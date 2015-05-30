@@ -20,7 +20,7 @@ class SeriesController < ApplicationController
 
     respond_to do |format|
       if @series.save
-        format.html { redirect_to "/temporadas/new/?series_id=#{@series.id}", notice: 'Adicionar Temporada para série' }
+        format.html { redirect_to series_temporadas_url(@temporada.series_id) }
       else
         format.html { render :new }
         format.json { render json: @series.errors, status: :unprocessable_entity }
@@ -49,13 +49,11 @@ class SeriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_series
       @series = Series.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def series_params
-      params.require(:series).permit(:title, :description)
+      params.require(:series).permit(:title, :description, :series_id)
     end
 end

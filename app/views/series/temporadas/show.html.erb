@@ -1,0 +1,13 @@
+<%- model_class = Temporada -%>
+<%= render :partial => 'form', locals: { temporada: @temporada } %>
+
+<table class="table table-striped js_temporadas" id="temporadas">
+  <tbody>
+    <% @temporadas.each do |temporada| %>
+      <%= render partial: 'temporada', locals: {temporada: temporada} %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_series_temporada(@temporada) %> |
+<%= link_to 'Back', temporadas_path %>

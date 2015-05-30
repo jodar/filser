@@ -1,4 +1,4 @@
-<%= form_for(@episodio) do |f| %>
+<%= form_for([:temporada  , @episodio]) do |f| %>
   <% if @episodio.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@episodio.errors.count, "error") %> prohibited this episodio from being saved:</h2>

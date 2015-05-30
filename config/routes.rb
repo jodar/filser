@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :episodios
-
-  resources :temporadas
-
+  
   get 'welcome/index'
 
-  resources :series
+  resources :series do
+  	resources :temporadas, controller: "series/temporadas" do
+  		resources :episodios
+  	end
+  end
+
   resources :movies
 
   root 'welcome#index'

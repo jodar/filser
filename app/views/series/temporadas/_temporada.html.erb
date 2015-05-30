@@ -1,0 +1,12 @@
+<%= form_for temporada, remote: true do |f| %>
+  <%= f.input_text :finished, as: :boolean %>
+<% end %>
+
+<td><%= link_to temporada.title, temporada_path(temporada_id: temporada.id) %></td>
+<td>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+    temporada_path(temporada),
+    :method => :delete,
+    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, remote: true,
+      :class => 'btn btn-mini btn-danger' %>
+</td>
