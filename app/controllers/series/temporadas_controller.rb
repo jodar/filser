@@ -1,8 +1,8 @@
 class Series::TemporadasController < ApplicationController
   before_action :set_temporada, only: [:show, :edit, :update, :destroy]
+  before_action :load_temporadas, only: [:index, :create, :show, :edit, :update, :destroy]
 
   def index
-    @temporadas = Temporada.all
     @temporada = Temporada.new
     # render :show
   end
@@ -21,6 +21,7 @@ class Series::TemporadasController < ApplicationController
 
   def create
     @temporada = Temporada.new(temporada_params)
+    @serie = Series.find(params[:series_id])
 
     respond_to do |format|
       if @temporada.save
@@ -44,7 +45,7 @@ class Series::TemporadasController < ApplicationController
   def destroy
     @temporada.destroy
     respond_to do |format|
-      format.html { redirect_to series_temporadas_url, notice: 'Temporada was successfully destroyed.' }
+      format.html { redirect_to series_temporadas_path, notice: 'Temporada was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -56,5 +57,9 @@ class Series::TemporadasController < ApplicationController
 
     def temporada_params
       params.require(:temporada).permit(:title, :year, :temporada_id, :series_id)
+    end
+
+    def load_temporadas
+      @temporadas = Temporada.all
     end
 end
